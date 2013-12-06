@@ -28,6 +28,7 @@ namespace layout_gen
             if (dr == DialogResult.OK)
             {
                 globalFilePath = this.openFileDialog1.FileName;
+
                 if (globalFilePath.Contains("layout"))
                 {
                     string temp = globalFilePath.Replace("res\\layout", "res\\values");
@@ -42,11 +43,47 @@ namespace layout_gen
         }
         void genFile()
         {
-            parser = new LayoutParser(globalFilePath);
-            parser.Parse();
+            if (txtFilePath.Text.Length<=0 || openFileDialog1.FileNames.Length <= 0)
+            {
+                MessageBox.Show("请先选择文件");
+                return;
+            }
+            if (txtSaveFileDir.Text.Length <= 0)
+            {
+                MessageBox.Show("请先选择保存路径");
+                return;
+            }
+
+            parser = new LayoutParser();
+            
+            foreach (string filename in this.openFileDialog1.FileNames)
+            {
+              //  Console.WriteLine(filename);
+                parser.setFilePath(filename);
+                parser.Parse();
+            }
             parser.setOutputPath(outputDir);
             parser.Save();
             MessageBox.Show("搞定!");
+        }
+        void backup() {
+            string select_dir = "";
+            DialogResult dr = this.folderBrowserDialog1.ShowDialog();
+            if (dr == DialogResult.OK)
+            {
+                select_dir = folderBrowserDialog1.SelectedPath;
+                string backup_path = select_dir + "\\backup";
+                if (Directory.Exists(backup_path))
+                {
+                    Directory.CreateDirectory(backup_path);
+                }
+                foreach (string filename in this.openFileDialog1.FileNames)
+                {
+                    File.Copy(filename, backup_path + "\\" + getFilename(filename)+".xml", true);
+                }
+                MessageBox.Show("搞定!");
+            }
+           
         }
         string getFilename(string filepath) {
             string result = "";
@@ -95,6 +132,11 @@ namespace layout_gen
         private void btn_save_Click(object sender, EventArgs e)
         {
             genFile();
+        }
+
+        private void bt_backup_Click(object sender, EventArgs e)
+        {
+            backup();
         }
     }
 }

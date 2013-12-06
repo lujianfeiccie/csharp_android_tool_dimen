@@ -7,7 +7,9 @@ namespace layout_gen
 {
     public class LayoutParser : BaseParser
     {
-        
+        public LayoutParser() : this("")
+        {
+        }
         public LayoutParser(string filepath):base(filepath)
         {
             replace_logic.Add("android:layout_width","dimen");
@@ -19,12 +21,13 @@ namespace layout_gen
         }
         public override bool Parse()
         {
-            return base.Parse();
+            bool result = base.Parse();
+            xmlDoc.Save(filepath);
+            return result;
         }
 
         public override bool Save()
         {
-            xmlDoc.Save(filepath);
             writeFile();
             return true;
         }

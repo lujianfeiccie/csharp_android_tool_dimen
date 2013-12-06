@@ -37,6 +37,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.bt_backup = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btn_save
@@ -105,11 +106,22 @@
             this.label2.TabIndex = 6;
             this.label2.Text = "保存文件夹:";
             // 
+            // bt_backup
+            // 
+            this.bt_backup.Location = new System.Drawing.Point(340, 145);
+            this.bt_backup.Name = "bt_backup";
+            this.bt_backup.Size = new System.Drawing.Size(75, 23);
+            this.bt_backup.TabIndex = 7;
+            this.bt_backup.Text = "备份";
+            this.bt_backup.UseVisualStyleBackColor = true;
+            this.bt_backup.Click += new System.EventHandler(this.bt_backup_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(427, 284);
+            this.Controls.Add(this.bt_backup);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btn_dir);
@@ -136,6 +148,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
+        private System.Windows.Forms.Button bt_backup;
     }
 }
 

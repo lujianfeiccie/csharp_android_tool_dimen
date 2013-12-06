@@ -18,20 +18,24 @@ namespace layout_gen
         protected Hashtable replace_logic = new Hashtable();
         protected Hashtable not_to_replace_node_value = new Hashtable();
         protected int count_controls = 0;
-        
+
         public BaseParser(string filepath) {
             setFilePath(filepath);
         }
 
         public void setFilePath(string filepath){
-            this.filepath = filepath;
-            int startindex = filepath.LastIndexOf(@"\") + 1;
-            this.filename = filepath.Substring(startindex, filepath.Length - startindex);
-            startindex = filename.LastIndexOf(@".");
-            this.filename = filename.Substring(0, startindex);
+            if (!filepath.Equals(""))
+            {
+                this.filepath = filepath;
+                int startindex = filepath.LastIndexOf(@"\") + 1;
+                this.filename = filepath.Substring(startindex, filepath.Length - startindex);
+                startindex = filename.LastIndexOf(@".");
+                this.filename = filename.Substring(0, startindex);
+            }
         }
         public virtual bool Parse() {
-            output_string.Append(string.Format("<!-- {0}.xml -->",filename));
+            count_controls = 0;
+            output_string.Append(string.Format("\n\n<!-- {0}.xml -->",filename));
             output_string.Append("\n");
             xmlDoc.Load(filepath);
             XmlNode root = xmlDoc.DocumentElement;

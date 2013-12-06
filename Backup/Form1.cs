@@ -73,7 +73,7 @@ namespace layout_gen
             {
                 select_dir = folderBrowserDialog1.SelectedPath;
                 string backup_path = select_dir + "\\backup";
-                if (!Directory.Exists(backup_path))
+                if (Directory.Exists(backup_path))
                 {
                     Directory.CreateDirectory(backup_path);
                 }

@@ -67,11 +67,20 @@
     </Compile>
     <Compile Include="Classes\BaseParser.cs" />
     <Compile Include="Classes\LayoutParser.cs" />
+    <Compile Include="FormAboutDlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAboutDlg.Designer.cs">
+      <DependentUpon>FormAboutDlg.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
       <SubType>Designer</SubType>
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAboutDlg.resx">
+      <DependentUpon>FormAboutDlg.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

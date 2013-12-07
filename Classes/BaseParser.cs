@@ -18,7 +18,8 @@ namespace layout_gen
         protected Hashtable replace_logic = new Hashtable();
         protected Hashtable not_to_replace_node_value = new Hashtable();
         protected int count_controls = 0;
-
+        protected string config_filename1;
+        protected string config_filename2;
         public BaseParser(string filepath) {
             setFilePath(filepath);
         }
@@ -109,9 +110,14 @@ namespace layout_gen
         protected void writeFile()
         {
             string tempstr = output_dir + output_filename;
-            FileStream fs = new FileStream(tempstr, FileMode.OpenOrCreate);
-            StreamWriter sw = new StreamWriter(fs, Encoding.Default);
+            FileStream fs = null;
+            StreamWriter sw = null;
+            
+            fs = new FileStream(tempstr, FileMode.Create);
+            sw = new StreamWriter(fs, Encoding.Default);
+            
             sw.Write("<resources>\n" + getOutput_string() + "\n</resources>");
+            
             sw.Close();
             fs.Close();
         }

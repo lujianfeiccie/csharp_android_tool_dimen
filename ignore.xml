@@ -1,0 +1,29 @@
+<root>
+  <data>
+    <value>fill_parent</value>
+  </data>
+  <data>
+    <value>match_parent</value>
+  </data>
+  <data>
+    <value>wrap_content</value>
+  </data>
+  <data>
+    <value>true</value>
+  </data>
+  <data>
+    <value>false</value>
+  </data>
+  <data>
+    <value>left</value>
+  </data>
+  <data>
+    <value>right</value>
+  </data>
+  <data>
+    <value>top</value>
+  </data>
+  <data>
+    <value>bottom</value>
+  </data>
+</root>
